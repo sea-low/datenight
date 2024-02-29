@@ -1,0 +1,22 @@
+{
+  "name": "2024feb27",
+  "version": "1.0.0",
+  "description": "date night selector",
+  "main": "option3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sea-low/datenight.git"
+  },
+  "author": "Clo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sea-low/datenight/issues"
+  },
+  "homepage": "https://github.com/sea-low/datenight#readme",
+  "dependencies": {
+    "git": "^0.1.5"
+  }
+}
