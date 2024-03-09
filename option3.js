@@ -77,36 +77,32 @@ function checkButton() {
     console.log(selectedDates);
 }
 
-function selectOnePlease() {
-    const form = document.querySelector('#createNewDate');
-    const checkboxes = form.querySelectorAll('input[type=checkbox]');
-    const checkboxLength = checkboxes.length;
-    const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
-
-    function init() {
-        if (firstCheckbox) {
-            for (let i = 0; i < checkboxLength; i++) {
-                checkboxes[i].addEventListener('change', checkValidity);
-            }
-
-            checkValidity();
+$("input:checkbox").on('click', function() {
+    var $box = $(this);
+    if ($box.is(":checked")) {
+      var group = "input:checkbox[name='" + $box.attr("name") + "']";
+      $(group).prop("checked", false);
+      $box.prop("checked", true);
+    } else {
+      $box.prop("checked", false);
+    }
+  });
+  
+    function isAtLeastOneChecked() {
+        if(document.getElementById("in-check").checked === false && document.getElementById("out-check").checked === false) {
+            alert('Must choose date type.');
         }
     }
 
-    function isChecked() {
-        for (let i = 0; i < checkboxLength; i++) {
-            if (checkboxes[i].checked) return true;
+    function isThereText() {
+        if($("#new-description").val().trim().length < 1) {
+            alert("Enter a description for the new date.");
+            return;
         }
-
-        return false;
     }
 
-    function checkValidity() {
-        const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
-        firstCheckbox.setCustomValidity(errorMessage);
-    }
-
-    init();
-};
-
-$('div.checkbox-group.required :checkbox:checked').length > 0
+  function requirementsMet() {
+    isAtLeastOneChecked();
+    isThereText();
+    console.log(document.getElementsByName("new-description").textarea);
+  }
